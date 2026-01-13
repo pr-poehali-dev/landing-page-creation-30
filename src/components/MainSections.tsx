@@ -227,7 +227,7 @@ const MainSections = ({ scrollToSection }: MainSectionsProps) => {
             <p className="text-xl text-muted-foreground">Что говорят наши клиенты</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-10">
             {[
               { rating: 5, text: 'Лайка счастлива! Видео каждый день. Спасибо!', author: 'Оксана М.', pet: 'Ретривер' },
               { rating: 5, text: 'Мурзик доволен и спокоен. Прекрасно!', author: 'Иван К.', pet: 'Кот' },
@@ -254,6 +254,19 @@ const MainSections = ({ scrollToSection }: MainSectionsProps) => {
                 </div>
               </Card>
             ))}
+          </div>
+
+          <div className="text-center">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-primary to-purple-600 text-white text-lg px-8 hover:shadow-xl transition-all transform hover:scale-105"
+              asChild
+            >
+              <a href="mailto:mashazoohot@mail.ru?subject=Отзыв о зоогостинице">
+                <Icon name="MessageSquare" className="mr-2" size={20} />
+                Оставить отзыв
+              </a>
+            </Button>
           </div>
         </div>
       </section>
