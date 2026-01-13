@@ -15,10 +15,17 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-purple-50">
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-purple-100 shadow-sm">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-primary">
-              🐾 В гостях у Маши
+            <div className="flex items-center gap-3">
+              <img 
+                src="https://cdn.poehali.dev/files/photo_2026-01-10_23-53-21.jpg" 
+                alt="В гостях у Маши" 
+                className="h-16 w-16 object-contain"
+              />
+              <div className="text-xl md:text-2xl font-bold text-primary">
+                В гостях у Маши
+              </div>
             </div>
 
             <nav className="hidden md:flex items-center gap-8">
