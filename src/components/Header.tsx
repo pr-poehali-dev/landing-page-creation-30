@@ -16,7 +16,7 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: HeaderPr
             <img 
               src="https://cdn.poehali.dev/files/photo_2026-01-10_23-53-21.jpg" 
               alt="В гостях у Маши" 
-              className="h-16 w-16 object-contain"
+              className="h-16 w-16 object-contain mix-blend-multiply"
             />
             <div className="text-xl md:text-2xl font-bold text-primary">
               В гостях у Маши
