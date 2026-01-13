@@ -10,7 +10,14 @@ const Footer = ({ scrollToSection }: FooterProps) => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
-            <div className="text-2xl font-bold mb-4">🐾 В гостях у Маши</div>
+            <div className="flex items-center gap-3 mb-4">
+              <img 
+                src="https://cdn.poehali.dev/files/photo_2026-01-10_23-53-21.jpg" 
+                alt="В гостях у Маши" 
+                className="h-16 w-16 object-contain mix-blend-lighten"
+              />
+              <div className="text-2xl font-bold">В гостях у Маши</div>
+            </div>
             <p className="opacity-90 mb-4">Премиум зоогостиница "В гостях у Маши". Благополучие питомца — на первом месте. 15+ лет опыта.</p>
           </div>
 

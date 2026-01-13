@@ -10,6 +10,13 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
     <section className="py-16 md:py-24 bg-gradient-to-br from-purple-50 via-orange-50 to-purple-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center animate-slide-up">
+          <div className="flex justify-center mb-8">
+            <img 
+              src="https://cdn.poehali.dev/files/photo_2026-01-10_23-53-21.jpg" 
+              alt="В гостях у Маши" 
+              className="h-32 w-32 md:h-40 md:w-40 object-contain mix-blend-multiply"
+            />
+          </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-purple-600 to-secondary bg-clip-text text-transparent leading-tight">
             Комфортный отдых для вашего <span className="text-secondary">питомца</span>
           </h1>

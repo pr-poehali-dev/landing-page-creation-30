@@ -262,6 +262,13 @@ const MainSections = ({ scrollToSection }: MainSectionsProps) => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
+              <div className="flex justify-center mb-6">
+                <img 
+                  src="https://cdn.poehali.dev/files/photo_2026-01-10_23-53-21.jpg" 
+                  alt="В гостях у Маши" 
+                  className="h-24 w-24 md:h-32 md:w-32 object-contain mix-blend-multiply bg-white/20 rounded-2xl p-2"
+                />
+              </div>
               <h2 className="text-3xl md:text-5xl font-bold mb-4">Забронировать место</h2>
               <p className="text-xl opacity-90">Заполните форму — администратор свяжется за час</p>
             </div>
