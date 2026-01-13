@@ -25,11 +25,14 @@ const Index = () => {
               <button onClick={() => scrollToSection('services')} className="text-foreground hover:text-primary transition-colors">
                 Услуги
               </button>
-              <button onClick={() => scrollToSection('pricing')} className="text-foreground hover:text-primary transition-colors">
-                Тарифы
+              <button onClick={() => scrollToSection('process')} className="text-foreground hover:text-primary transition-colors">
+                Как работаем
               </button>
-              <button onClick={() => scrollToSection('why-us')} className="text-foreground hover:text-primary transition-colors">
-                Почему мы
+              <button onClick={() => scrollToSection('reviews')} className="text-foreground hover:text-primary transition-colors">
+                Отзывы
+              </button>
+              <button onClick={() => scrollToSection('booking')} className="text-foreground hover:text-primary transition-colors">
+                Бронь
               </button>
               <Button asChild className="bg-gradient-to-r from-primary to-purple-600 hover:shadow-lg transition-all">
                 <a href="tel:+79020526145">Позвонить</a>
@@ -49,11 +52,14 @@ const Index = () => {
               <button onClick={() => scrollToSection('services')} className="text-left py-2 text-foreground hover:text-primary">
                 Услуги
               </button>
-              <button onClick={() => scrollToSection('pricing')} className="text-left py-2 text-foreground hover:text-primary">
-                Тарифы
+              <button onClick={() => scrollToSection('process')} className="text-left py-2 text-foreground hover:text-primary">
+                Как работаем
               </button>
-              <button onClick={() => scrollToSection('why-us')} className="text-left py-2 text-foreground hover:text-primary">
-                Почему мы
+              <button onClick={() => scrollToSection('reviews')} className="text-left py-2 text-foreground hover:text-primary">
+                Отзывы
+              </button>
+              <button onClick={() => scrollToSection('booking')} className="text-left py-2 text-foreground hover:text-primary">
+                Бронь
               </button>
               <Button asChild className="bg-gradient-to-r from-primary to-purple-600">
                 <a href="tel:+79020526145">Позвонить</a>
@@ -292,24 +298,284 @@ const Index = () => {
         </div>
       </section>
 
-      <footer className="bg-gradient-to-r from-primary to-purple-600 text-white py-12">
+      <section id="process" className="py-16 md:py-20 bg-gradient-to-br from-purple-50 to-orange-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">Как мы работаем</h2>
+            <p className="text-xl text-muted-foreground">Четыре простых этапа от звонка до счастья</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            <Card className="p-6 bg-white hover:shadow-2xl transition-all transform hover:-translate-y-2">
+              <div className="text-6xl mb-4 text-center">📞</div>
+              <h3 className="text-xl font-bold mb-3 text-center">Шаг 1: Звонок/Заявка</h3>
+              <p className="text-muted-foreground text-center">Бронируем место, вносите предоплату 50%</p>
+            </Card>
+
+            <Card className="p-6 bg-white hover:shadow-2xl transition-all transform hover:-translate-y-2">
+              <div className="text-6xl mb-4 text-center">📝</div>
+              <h3 className="text-xl font-bold mb-3 text-center">Шаг 2: Заезд (09:00 - 19:00)</h3>
+              <p className="text-muted-foreground text-center">Проверяем документы, осматриваем питомца, заполняем "Карточку гостя"</p>
+            </Card>
+
+            <Card className="p-6 bg-white hover:shadow-2xl transition-all transform hover:-translate-y-2">
+              <div className="text-6xl mb-4 text-center">🏡</div>
+              <h3 className="text-xl font-bold mb-3 text-center">Шаг 3: Отдых</h3>
+              <p className="text-muted-foreground text-center">Питомец наслаждается прогулками, вы получаете фотоотчеты</p>
+            </Card>
+
+            <Card className="p-6 bg-white hover:shadow-2xl transition-all transform hover:-translate-y-2">
+              <div className="text-6xl mb-4 text-center">🤝</div>
+              <h3 className="text-xl font-bold mb-3 text-center">Шаг 4: Выезд</h3>
+              <p className="text-muted-foreground text-center">Окончательный расчет и счастливая встреча</p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews" className="py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">Отзывы владельцев</h2>
+            <p className="text-xl text-muted-foreground">Что говорят наши клиенты</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {[
+              { rating: 5, text: 'Лайка счастлива! Видео каждый день. Спасибо!', author: 'Оксана М.', pet: 'Ретривер' },
+              { rating: 5, text: 'Мурзик доволен и спокоен. Прекрасно!', author: 'Иван К.', pet: 'Кот' },
+              { rating: 5, text: 'Гриша здоров и весел. Лучшая!', author: 'Елена', pet: 'Какаду' },
+              { rating: 5, text: 'Щенок слушается! Результат отличный!', author: 'Денис П.', pet: 'Боксер' },
+              { rating: 5, text: 'Груминг идеален! Питомец счастлив!', author: 'Алина Р.', pet: 'Йорк' },
+              { rating: 5, text: 'Месяц на передержке. Очень доволен!', author: 'Сергей М.', pet: 'Овчарка' }
+            ].map((review, idx) => (
+              <Card key={idx} className="p-6 bg-gradient-to-br from-white to-purple-50 hover:shadow-xl transition-all">
+                <div className="flex gap-1 mb-3">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <Icon key={i} name="Star" className="text-yellow-500 fill-yellow-500" size={20} />
+                  ))}
+                </div>
+                <p className="text-muted-foreground mb-4 italic">"{review.text}"</p>
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-white font-bold">
+                    {review.author[0]}
+                  </div>
+                  <div>
+                    <p className="font-semibold">{review.author}</p>
+                    <p className="text-sm text-muted-foreground">{review.pet}</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="booking" className="py-16 md:py-20 bg-gradient-to-br from-primary via-purple-600 to-purple-700 text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Забронировать место</h2>
+              <p className="text-xl opacity-90">Заполните форму — администратор свяжется за час</p>
+            </div>
+
+            <Card className="p-8 bg-white text-foreground">
+              <form className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Ваше имя *</label>
+                    <input
+                      type="text"
+                      required
+                      className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                      placeholder="Иван"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Телефон *</label>
+                    <input
+                      type="tel"
+                      required
+                      className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                      placeholder="+7 (900) 000-00-00"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Имя питомца *</label>
+                    <input
+                      type="text"
+                      required
+                      className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                      placeholder="Барсик"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Вид животного *</label>
+                    <select
+                      required
+                      className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    >
+                      <option value="">Выберите</option>
+                      <option value="dog">Собака</option>
+                      <option value="cat">Кошка</option>
+                      <option value="rodent">Грызун</option>
+                      <option value="bird">Птица</option>
+                      <option value="reptile">Рептилия</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Заселение *</label>
+                    <input
+                      type="date"
+                      required
+                      className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Выселение *</label>
+                    <input
+                      type="date"
+                      required
+                      className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Выбранный пакет *</label>
+                  <select
+                    required
+                    className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                  >
+                    <option value="">Выберите пакет</option>
+                    <option value="standard">Стандартная передержка</option>
+                    <option value="comfort">Комфорт Плюс</option>
+                    <option value="luxury">Люкс</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Особенности питомца</label>
+                  <textarea
+                    rows={4}
+                    className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
+                    placeholder="Расскажите об особенностях характера, здоровья, питания..."
+                  ></textarea>
+                </div>
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-gradient-to-r from-primary to-purple-600 text-white text-lg py-6 hover:shadow-xl transition-all transform hover:scale-105"
+                >
+                  <Icon name="Send" className="mr-2" size={20} />
+                  Отправить заявку
+                </Button>
+              </form>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 bg-gradient-to-r from-secondary via-orange-500 to-primary text-white">
         <div className="container mx-auto px-4 text-center">
-          <div className="text-3xl font-bold mb-4">🐾 В гостях у Маши</div>
-          <p className="text-lg mb-6 opacity-90">Премиум зоогостиница в 50 км от Владивостока</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Button 
-              size="lg" 
-              variant="secondary"
-              className="bg-white text-primary hover:bg-gray-100"
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">Готовы доверить нам самое ценное?</h2>
+          <p className="text-xl md:text-2xl mb-8 opacity-90">Первое бронирование — консультация БЕСПЛАТНО!</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              className="bg-white text-primary hover:bg-gray-100 text-lg px-8 transform hover:scale-105 transition-all"
+              onClick={() => scrollToSection('booking')}
+            >
+              Забронировать место
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 transition-all"
               asChild
             >
               <a href="tel:+79020526145">
                 <Icon name="Phone" className="mr-2" size={20} />
-                +7 (902) 052-61-45
+                Позвонить: 89020526145
               </a>
             </Button>
           </div>
-          <p className="text-sm opacity-75">с. Кипарисово, Приморский край</p>
+        </div>
+      </section>
+
+      <footer className="bg-gradient-to-r from-primary via-purple-700 to-purple-900 text-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div>
+              <div className="text-2xl font-bold mb-4">🐾 В гостях у Маши</div>
+              <p className="opacity-90 mb-4">Премиум зоогостиница "В гостях у Маши". Благополучие питомца — на первом месте. 15+ лет опыта.</p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-bold mb-4">Быстрые ссылки</h3>
+              <div className="space-y-2">
+                <button onClick={() => scrollToSection('services')} className="block opacity-90 hover:opacity-100 transition-opacity">
+                  Услуги
+                </button>
+                <button onClick={() => scrollToSection('pricing')} className="block opacity-90 hover:opacity-100 transition-opacity">
+                  Тарифы
+                </button>
+                <button onClick={() => scrollToSection('booking')} className="block opacity-90 hover:opacity-100 transition-opacity">
+                  Бронирование
+                </button>
+                <button onClick={() => scrollToSection('reviews')} className="block opacity-90 hover:opacity-100 transition-opacity">
+                  Отзывы
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-bold mb-4">Контакты</h3>
+              <div className="space-y-2">
+                <a href="tel:+79020526145" className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity">
+                  <Icon name="Phone" size={18} />
+                  +7 902 052-61-45
+                </a>
+                <a href="mailto:mashazoohot@mail.ru" className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity">
+                  <Icon name="Mail" size={18} />
+                  mashazoohot@mail.ru
+                </a>
+                <p className="flex items-start gap-2 opacity-90">
+                  <Icon name="MapPin" size={18} className="mt-1 flex-shrink-0" />
+                  <span>с. Кипарисово, Приморский край</span>
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-bold mb-4">Мы в соцсетях</h3>
+              <div className="flex gap-3">
+                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all">
+                  <Icon name="Instagram" size={20} />
+                </a>
+                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all">
+                  <Icon name="Facebook" size={20} />
+                </a>
+                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all">
+                  <Icon name="MessageCircle" size={20} />
+                </a>
+                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all">
+                  <Icon name="Youtube" size={20} />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-white/20 pt-8 text-center">
+            <p className="opacity-75">&copy; 2024-2026 "В гостях у Маши". Все права защищены.</p>
+          </div>
         </div>
       </footer>
     </div>
