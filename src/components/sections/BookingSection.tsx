@@ -107,6 +107,26 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
                   ></textarea>
                 </div>
 
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="privacy-policy"
+                    required
+                    className="mt-1 w-4 h-4 text-primary border-input rounded focus:ring-2 focus:ring-primary"
+                  />
+                  <label htmlFor="privacy-policy" className="text-sm text-muted-foreground">
+                    Я согласен с{' '}
+                    <a 
+                      href="/privacy-policy" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-purple-700 underline font-medium"
+                    >
+                      политикой обработки персональных данных
+                    </a>
+                  </label>
+                </div>
+
                 <Button
                   type="submit"
                   size="lg"
