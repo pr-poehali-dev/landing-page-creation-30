@@ -3,6 +3,7 @@ import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 import { useState } from 'react';
 import PrivacyPolicyModal from '@/components/PrivacyPolicyModal';
+import SuccessModal from '@/components/SuccessModal';
 
 interface BookingSectionProps {
   scrollToSection: (id: string) => void;
@@ -10,6 +11,7 @@ interface BookingSectionProps {
 
 const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
   const [isPolicyOpen, setIsPolicyOpen] = useState(false);
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -41,6 +43,7 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
 
       if (response.ok) {
         setSubmitStatus('success');
+        setIsSuccessOpen(true);
         e.currentTarget.reset();
       } else {
         setSubmitStatus('error');
@@ -241,6 +244,7 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
       </section>
 
       <PrivacyPolicyModal open={isPolicyOpen} onOpenChange={setIsPolicyOpen} />
+      <SuccessModal open={isSuccessOpen} onOpenChange={setIsSuccessOpen} />
     </>
   );
 };
