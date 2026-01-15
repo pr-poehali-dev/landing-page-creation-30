@@ -1,0 +1,25 @@
+{
+  "tests": [
+    {
+      "name": "Test booking submission",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "ownerName": "Иван Тестовый",
+        "phone": "+7 (900) 123-45-67",
+        "petName": "Барсик",
+        "animalType": "cat",
+        "checkIn": "2026-02-01",
+        "checkOut": "2026-02-05",
+        "package": "standard",
+        "details": "Кот спокойный, любит спать"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "message": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
