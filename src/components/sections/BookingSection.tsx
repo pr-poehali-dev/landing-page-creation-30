@@ -1,12 +1,16 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
+import { useState } from 'react';
+import PrivacyPolicyModal from '@/components/PrivacyPolicyModal';
 
 interface BookingSectionProps {
   scrollToSection: (id: string) => void;
 }
 
 const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
+  const [isPolicyOpen, setIsPolicyOpen] = useState(false);
+
   return (
     <>
       <section id="booking" className="py-16 md:py-20 bg-gradient-to-br from-primary via-purple-600 to-purple-700 text-white">
@@ -116,14 +120,13 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
                   />
                   <label htmlFor="privacy-policy" className="text-sm text-muted-foreground">
                     Я согласен с{' '}
-                    <a 
-                      href="/privacy-policy" 
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button 
+                      type="button"
+                      onClick={() => setIsPolicyOpen(true)}
                       className="text-primary hover:text-purple-700 underline font-medium"
                     >
                       политикой обработки персональных данных
-                    </a>
+                    </button>
                   </label>
                 </div>
 
@@ -157,6 +160,8 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
           </div>
         </div>
       </section>
+
+      <PrivacyPolicyModal open={isPolicyOpen} onOpenChange={setIsPolicyOpen} />
     </>
   );
 };
