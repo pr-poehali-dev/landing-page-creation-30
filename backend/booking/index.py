@@ -79,6 +79,9 @@ def handler(event: dict, context) -> dict:
 {details if details else 'Не указаны'}
 
 ⏰ <b>Время заявки:</b> {datetime.now().strftime('%d.%m.%Y %H:%M')}
+
+---
+🏠 Зоогостиница "В гостях у Маши"
 """
         
         bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
