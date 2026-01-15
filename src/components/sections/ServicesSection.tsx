@@ -191,7 +191,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
                   <span>Полная изоляция от собак</span>
                 </li>
               </ul>
-              <div className="text-3xl font-bold text-secondary">₽1000<span className="text-lg text-muted-foreground">/сутки</span></div>
+              <div className="text-3xl font-bold text-secondary">₽1500<span className="text-lg text-muted-foreground">/сутки</span></div>
             </Card>
 
             <Card className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-accent bg-gradient-to-br from-white to-green-50 animate-on-scroll">
