@@ -10,6 +10,47 @@ interface BookingSectionProps {
 
 const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
   const [isPolicyOpen, setIsPolicyOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      ownerName: formData.get('ownerName') as string,
+      phone: formData.get('phone') as string,
+      petName: formData.get('petName') as string,
+      animalType: formData.get('animalType') as string,
+      checkIn: formData.get('checkIn') as string,
+      checkOut: formData.get('checkOut') as string,
+      package: formData.get('package') as string,
+      details: formData.get('details') as string,
+    };
+
+    try {
+      const response = await fetch('https://functions.poehali.dev/7afeea13-22ea-4a33-b36b-600de08a3cbf', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        e.currentTarget.reset();
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -22,12 +63,13 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
             </div>
 
             <Card className="p-8 bg-white text-foreground animate-on-scroll-scale">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium mb-2">Ваше имя *</label>
                     <input
                       type="text"
+                      name="ownerName"
                       required
                       className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                       placeholder="Иван"
@@ -37,6 +79,7 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
                     <label className="block text-sm font-medium mb-2">Телефон *</label>
                     <input
                       type="tel"
+                      name="phone"
                       required
                       className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                       placeholder="+7 (900) 000-00-00"
@@ -49,6 +92,7 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
                     <label className="block text-sm font-medium mb-2">Имя питомца *</label>
                     <input
                       type="text"
+                      name="petName"
                       required
                       className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                       placeholder="Барсик"
@@ -57,6 +101,7 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
                   <div>
                     <label className="block text-sm font-medium mb-2">Вид животного *</label>
                     <select
+                      name="animalType"
                       required
                       className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                     >
@@ -75,6 +120,7 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
                     <label className="block text-sm font-medium mb-2">Заселение *</label>
                     <input
                       type="date"
+                      name="checkIn"
                       required
                       className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                     />
@@ -83,6 +129,7 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
                     <label className="block text-sm font-medium mb-2">Выселение *</label>
                     <input
                       type="date"
+                      name="checkOut"
                       required
                       className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                     />
@@ -92,6 +139,7 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
                 <div>
                   <label className="block text-sm font-medium mb-2">Выбранный пакет *</label>
                   <select
+                    name="package"
                     required
                     className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                   >
@@ -105,6 +153,7 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
                 <div>
                   <label className="block text-sm font-medium mb-2">Особенности питомца</label>
                   <textarea
+                    name="details"
                     rows={4}
                     className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
                     placeholder="Расскажите об особенностях характера, здоровья, питания..."
@@ -130,13 +179,43 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
                   </label>
                 </div>
 
+                {submitStatus === 'success' && (
+                  <div className="bg-green-50 border border-green-200 text-green-800 px-6 py-4 rounded-xl flex items-center gap-3">
+                    <Icon name="CheckCircle" size={24} className="text-green-600" />
+                    <div>
+                      <p className="font-semibold">Заявка успешно отправлена!</p>
+                      <p className="text-sm">Мы свяжемся с вами в ближайшее время</p>
+                    </div>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="bg-red-50 border border-red-200 text-red-800 px-6 py-4 rounded-xl flex items-center gap-3">
+                    <Icon name="AlertCircle" size={24} className="text-red-600" />
+                    <div>
+                      <p className="font-semibold">Ошибка отправки</p>
+                      <p className="text-sm">Попробуйте позже или позвоните нам</p>
+                    </div>
+                  </div>
+                )}
+
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg py-6 hover:shadow-xl transition-all transform hover:scale-105"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg py-6 hover:shadow-xl transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <Icon name="Send" className="mr-2" size={20} />
-                  Отправить заявку
+                  {isSubmitting ? (
+                    <>
+                      <Icon name="Loader2" className="mr-2 animate-spin" size={20} />
+                      Отправка...
+                    </>
+                  ) : (
+                    <>
+                      <Icon name="Send" className="mr-2" size={20} />
+                      Отправить заявку
+                    </>
+                  )}
                 </Button>
               </form>
             </Card>

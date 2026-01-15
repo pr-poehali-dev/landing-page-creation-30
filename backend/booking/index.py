@@ -4,6 +4,7 @@ import urllib.request
 import urllib.parse
 from datetime import datetime
 
+
 def handler(event: dict, context) -> dict:
     """Обработка заявок на бронирование и отправка в Telegram"""
     
