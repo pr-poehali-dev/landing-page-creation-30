@@ -3,9 +3,11 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import MainSections from '@/components/MainSections';
 import Footer from '@/components/Footer';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  useScrollAnimation();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);

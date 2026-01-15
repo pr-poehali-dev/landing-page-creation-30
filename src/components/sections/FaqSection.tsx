@@ -8,7 +8,7 @@ const FaqSection = () => {
   return (
     <section id="faq" className="py-16 md:py-20 bg-gradient-to-br from-purple-50 to-orange-50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-on-scroll">
           <div className="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-medium mb-4">
             Часто задаваемые вопросы
           </div>
@@ -18,7 +18,7 @@ const FaqSection = () => {
 
         <div className="max-w-4xl mx-auto space-y-4">
           <Card 
-            className="cursor-pointer hover:shadow-lg transition-all bg-white"
+            className="cursor-pointer hover:shadow-lg transition-all bg-white animate-on-scroll"
             onClick={() => setOpenFaq(openFaq === 1 ? null : 1)}
           >
             <div className="p-6">
@@ -35,7 +35,7 @@ const FaqSection = () => {
           </Card>
 
           <Card 
-            className="cursor-pointer hover:shadow-lg transition-all bg-white"
+            className="cursor-pointer hover:shadow-lg transition-all bg-white animate-on-scroll"
             onClick={() => setOpenFaq(openFaq === 2 ? null : 2)}
           >
             <div className="p-6">
@@ -52,7 +52,7 @@ const FaqSection = () => {
           </Card>
 
           <Card 
-            className="cursor-pointer hover:shadow-lg transition-all bg-white"
+            className="cursor-pointer hover:shadow-lg transition-all bg-white animate-on-scroll"
             onClick={() => setOpenFaq(openFaq === 3 ? null : 3)}
           >
             <div className="p-6">
@@ -69,7 +69,7 @@ const FaqSection = () => {
           </Card>
 
           <Card 
-            className="cursor-pointer hover:shadow-lg transition-all bg-white"
+            className="cursor-pointer hover:shadow-lg transition-all bg-white animate-on-scroll"
             onClick={() => setOpenFaq(openFaq === 4 ? null : 4)}
           >
             <div className="p-6">
@@ -86,7 +86,7 @@ const FaqSection = () => {
           </Card>
 
           <Card 
-            className="cursor-pointer hover:shadow-lg transition-all bg-white"
+            className="cursor-pointer hover:shadow-lg transition-all bg-white animate-on-scroll"
             onClick={() => setOpenFaq(openFaq === 5 ? null : 5)}
           >
             <div className="p-6">

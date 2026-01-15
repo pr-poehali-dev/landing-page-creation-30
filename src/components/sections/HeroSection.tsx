@@ -15,7 +15,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
+          <div className="space-y-8 animate-on-scroll-left">
             <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-medium">
               ⭐ 500+ довольных питомцев
             </div>
@@ -65,7 +65,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
             </div>
           </div>
           
-          <div className="relative">
+          <div className="relative animate-on-scroll-right">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <img 

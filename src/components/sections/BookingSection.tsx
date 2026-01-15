@@ -12,12 +12,12 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
       <section id="booking" className="py-16 md:py-20 bg-gradient-to-br from-primary via-purple-600 to-purple-700 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
+            <div className="text-center mb-12 animate-on-scroll">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">Забронировать место</h2>
               <p className="text-xl opacity-90">Заполните форму — администратор свяжется за час</p>
             </div>
 
-            <Card className="p-8 bg-white text-foreground">
+            <Card className="p-8 bg-white text-foreground animate-on-scroll-scale">
               <form className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -122,7 +122,7 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
       </section>
 
       <section className="py-16 md:py-20 bg-gradient-to-r from-secondary via-orange-500 to-primary text-white">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 text-center animate-on-scroll">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Готовы доверить нам самое ценное?</h2>
           <p className="text-xl md:text-2xl mb-8 opacity-90">Первое бронирование — консультация БЕСПЛАТНО!</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

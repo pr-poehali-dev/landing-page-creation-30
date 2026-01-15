@@ -11,7 +11,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
     <>
       <section className="py-16 md:py-20 bg-gradient-to-br from-orange-50 via-white to-purple-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-on-scroll">
             <div className="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-medium mb-4">
               Почему нам доверяют
             </div>
@@ -20,7 +20,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-primary bg-white">
+            <Card className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-primary bg-white animate-on-scroll-scale">
               <div className="w-16 h-16 bg-gradient-to-br from-primary to-purple-600 rounded-2xl flex items-center justify-center mb-6 transform hover:rotate-6 transition-all">
                 <Icon name="Clock" className="text-white" size={32} />
               </div>
@@ -28,7 +28,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               <p className="text-muted-foreground text-lg">Круглосуточный контроль и забота. Ваш питомец никогда не останется один.</p>
             </Card>
 
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary bg-white">
+            <Card className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary bg-white animate-on-scroll-scale">
               <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 transform hover:rotate-6 transition-all">
                 <Icon name="Camera" className="text-white" size={32} />
               </div>
@@ -36,7 +36,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               <p className="text-muted-foreground text-lg">Получайте фото и видео отчёты каждый день. Будьте в курсе настроения любимца.</p>
             </Card>
 
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-accent bg-white">
+            <Card className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-accent bg-white animate-on-scroll-scale">
               <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 transform hover:rotate-6 transition-all">
                 <Icon name="Thermometer" className="text-white" size={32} />
               </div>
@@ -44,7 +44,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               <p className="text-muted-foreground text-lg">Комфортная температура круглый год. Уютные комнаты с мягкими лежанками.</p>
             </Card>
 
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-primary bg-white">
+            <Card className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-primary bg-white animate-on-scroll-scale">
               <div className="w-16 h-16 bg-gradient-to-br from-primary to-purple-600 rounded-2xl flex items-center justify-center mb-6 transform hover:rotate-6 transition-all">
                 <Icon name="Apple" className="text-white" size={32} />
               </div>
@@ -52,7 +52,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               <p className="text-muted-foreground text-lg">Кормим по вашему графику и рациону. Учитываем все особенности здоровья.</p>
             </Card>
 
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary bg-white">
+            <Card className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary bg-white animate-on-scroll-scale">
               <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 transform hover:rotate-6 transition-all">
                 <Icon name="Heart" className="text-white" size={32} />
               </div>
@@ -60,7 +60,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               <p className="text-muted-foreground text-lg">Каждый питомец получает внимание, ласку и индивидуальный подход.</p>
             </Card>
 
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-accent bg-white">
+            <Card className="p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-accent bg-white animate-on-scroll-scale">
               <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 transform hover:rotate-6 transition-all">
                 <Icon name="MapPin" className="text-white" size={32} />
               </div>
@@ -73,7 +73,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
 
       <section id="process" className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-on-scroll">
             <div className="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-medium mb-4">
               Простой процесс
             </div>
@@ -82,7 +82,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="relative text-center">
+            <div className="relative text-center animate-on-scroll">
               <div className="w-24 h-24 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
                 <span className="text-4xl font-bold text-white">1</span>
               </div>
@@ -93,7 +93,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               <div className="hidden md:block absolute top-12 -right-8 text-6xl text-purple-200">→</div>
             </div>
 
-            <div className="relative text-center">
+            <div className="relative text-center animate-on-scroll">
               <div className="w-24 h-24 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
                 <span className="text-4xl font-bold text-white">2</span>
               </div>
@@ -104,7 +104,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               <div className="hidden md:block absolute top-12 -right-8 text-6xl text-orange-200">→</div>
             </div>
 
-            <div className="text-center">
+            <div className="text-center animate-on-scroll">
               <div className="w-24 h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
                 <span className="text-4xl font-bold text-white">3</span>
               </div>
@@ -130,13 +130,13 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
 
       <section id="services" className="py-16 md:py-20 bg-gradient-to-br from-purple-50 to-orange-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-on-scroll">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary">Услуги и цены</h2>
             <p className="text-xl text-muted-foreground">Честные тарифы без скрытых доплат</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            <Card className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-primary bg-gradient-to-br from-white to-purple-50">
+            <Card className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-primary bg-gradient-to-br from-white to-purple-50 animate-on-scroll">
               <div className="text-5xl mb-4">🐕</div>
               <h3 className="text-2xl font-bold mb-2">Собаки</h3>
               <p className="text-muted-foreground mb-4">Любые породы</p>
@@ -165,7 +165,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               <div className="text-3xl font-bold text-primary">₽1500<span className="text-lg text-muted-foreground">/сутки</span></div>
             </Card>
 
-            <Card className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary bg-gradient-to-br from-white to-orange-50">
+            <Card className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary bg-gradient-to-br from-white to-orange-50 animate-on-scroll">
               <div className="text-5xl mb-4">🐈</div>
               <h3 className="text-2xl font-bold mb-2">Кошки</h3>
               <p className="text-muted-foreground mb-4">Уютные апартаменты</p>
@@ -194,7 +194,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               <div className="text-3xl font-bold text-secondary">₽1000<span className="text-lg text-muted-foreground">/сутки</span></div>
             </Card>
 
-            <Card className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-accent bg-gradient-to-br from-white to-green-50">
+            <Card className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-accent bg-gradient-to-br from-white to-green-50 animate-on-scroll">
               <div className="text-5xl mb-4">💬</div>
               <h3 className="text-2xl font-bold mb-2">Консультации</h3>
               <p className="text-muted-foreground mb-4">Профессиональные рекомендации</p>
@@ -215,7 +215,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               <div className="text-2xl font-bold text-accent">По согласованию</div>
             </Card>
 
-            <Card className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-primary bg-gradient-to-br from-white to-purple-50">
+            <Card className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-primary bg-gradient-to-br from-white to-purple-50 animate-on-scroll">
               <div className="text-5xl mb-4">🦎</div>
               <h3 className="text-2xl font-bold mb-2">Экзотика</h3>
               <p className="text-muted-foreground mb-4">Специализированный уход</p>
@@ -241,7 +241,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
 
       <section id="gallery" className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-on-scroll">
             <div className="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-medium mb-4">
               Наши номера
             </div>
@@ -250,7 +250,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-on-scroll-scale">
               <img 
                 src="https://cdn.poehali.dev/projects/13c1a0da-2d23-4c11-b13e-e26286d9f5b9/files/74e853df-3b68-4d1d-8c3d-aa2275e147aa.jpg" 
                 alt="Номер для собак" 
@@ -262,7 +262,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               </div>
             </Card>
 
-            <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-on-scroll-scale">
               <img 
                 src="https://cdn.poehali.dev/projects/13c1a0da-2d23-4c11-b13e-e26286d9f5b9/files/01e880e7-8efd-4de1-b696-21c29f48c5ab.jpg" 
                 alt="Номер для кошек" 
@@ -274,7 +274,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               </div>
             </Card>
 
-            <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-on-scroll-scale">
               <img 
                 src="https://cdn.poehali.dev/projects/13c1a0da-2d23-4c11-b13e-e26286d9f5b9/files/96720257-3bba-4315-8de5-28c381f7e239.jpg" 
                 alt="Люкс номер" 
@@ -291,7 +291,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
 
       <section id="reviews" className="py-16 md:py-20 bg-gradient-to-br from-purple-50 to-orange-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-on-scroll">
             <div className="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-medium mb-4">
               Отзывы клиентов
             </div>
@@ -300,7 +300,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 bg-white">
+            <Card className="p-8 hover:shadow-2xl transition-all duration-300 bg-white animate-on-scroll-scale">
               <div className="flex items-center gap-1 mb-4">
                 <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
                 <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
@@ -322,7 +322,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               </div>
             </Card>
 
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 bg-white">
+            <Card className="p-8 hover:shadow-2xl transition-all duration-300 bg-white animate-on-scroll-scale">
               <div className="flex items-center gap-1 mb-4">
                 <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
                 <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
@@ -344,7 +344,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               </div>
             </Card>
 
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 bg-white">
+            <Card className="p-8 hover:shadow-2xl transition-all duration-300 bg-white animate-on-scroll-scale">
               <div className="flex items-center gap-1 mb-4">
                 <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
                 <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
@@ -384,31 +384,31 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
 
       <section id="pricing" className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-on-scroll">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary">Скидки и акции</h2>
             <p className="text-xl text-muted-foreground">Выгоднее отдыхать дольше!</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            <Card className="p-8 text-center bg-gradient-to-br from-purple-50 to-white hover:shadow-xl transition-all transform hover:scale-105">
+            <Card className="p-8 text-center bg-gradient-to-br from-purple-50 to-white hover:shadow-xl transition-all transform hover:scale-105 animate-on-scroll">
               <div className="text-5xl mb-4">📉</div>
               <div className="text-2xl font-bold mb-2">от 10 дней</div>
               <div className="text-3xl font-bold text-primary">скидка 5%</div>
             </Card>
 
-            <Card className="p-8 text-center bg-gradient-to-br from-orange-50 to-white hover:shadow-xl transition-all transform hover:scale-105">
+            <Card className="p-8 text-center bg-gradient-to-br from-orange-50 to-white hover:shadow-xl transition-all transform hover:scale-105 animate-on-scroll">
               <div className="text-5xl mb-4">📉</div>
               <div className="text-2xl font-bold mb-2">от 20 дней</div>
               <div className="text-3xl font-bold text-secondary">скидка 10%</div>
             </Card>
 
-            <Card className="p-8 text-center bg-gradient-to-br from-green-50 to-white hover:shadow-xl transition-all transform hover:scale-105">
+            <Card className="p-8 text-center bg-gradient-to-br from-green-50 to-white hover:shadow-xl transition-all transform hover:scale-105 animate-on-scroll">
               <div className="text-5xl mb-4">📉</div>
               <div className="text-2xl font-bold mb-2">от 30 дней</div>
               <div className="text-3xl font-bold text-accent">скидка 15%</div>
             </Card>
 
-            <Card className="p-8 text-center bg-gradient-to-br from-primary to-purple-600 text-white hover:shadow-2xl transition-all transform hover:scale-105">
+            <Card className="p-8 text-center bg-gradient-to-br from-primary to-purple-600 text-white hover:shadow-2xl transition-all transform hover:scale-105 animate-on-scroll">
               <div className="text-5xl mb-4">🎁</div>
               <div className="text-2xl font-bold mb-2">Приведи друга</div>
               <div className="text-3xl font-bold">скидка 10%</div>
