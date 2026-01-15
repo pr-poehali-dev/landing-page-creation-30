@@ -135,7 +135,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
             <p className="text-xl text-muted-foreground">Честные тарифы без скрытых доплат</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <Card className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-primary bg-gradient-to-br from-white to-purple-50 animate-on-scroll">
               <div className="text-5xl mb-4">🐕</div>
               <h3 className="text-2xl font-bold mb-2">Собаки</h3>
@@ -215,26 +215,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
               <div className="text-2xl font-bold text-accent">По согласованию</div>
             </Card>
 
-            <Card className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-primary bg-gradient-to-br from-white to-purple-50 animate-on-scroll">
-              <div className="text-5xl mb-4">🦎</div>
-              <h3 className="text-2xl font-bold mb-2">Экзотика</h3>
-              <p className="text-muted-foreground mb-4">Специализированный уход</p>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-start gap-2 text-sm">
-                  <Icon name="Check" className="text-accent mt-0.5 flex-shrink-0" size={16} />
-                  <span>Специализированный уход</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm">
-                  <Icon name="Check" className="text-accent mt-0.5 flex-shrink-0" size={16} />
-                  <span>Контроль климата</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm">
-                  <Icon name="Check" className="text-accent mt-0.5 flex-shrink-0" size={16} />
-                  <span>Кормление по графику</span>
-                </li>
-              </ul>
-              <div className="text-2xl font-bold text-primary">Уточняйте цену</div>
-            </Card>
+
           </div>
         </div>
       </section>
