@@ -36,9 +36,6 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: HeaderPr
             <button onClick={() => scrollToSection('booking')} className="text-foreground hover:text-primary transition-colors">
               Бронь
             </button>
-            <Button asChild className="bg-gradient-to-r from-primary to-purple-600 hover:shadow-lg transition-all">
-              <a href="tel:+79020526145">Позвонить</a>
-            </Button>
           </nav>
 
           <button
@@ -63,9 +60,6 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: HeaderPr
             <button onClick={() => scrollToSection('booking')} className="text-left py-2 text-foreground hover:text-primary">
               Бронь
             </button>
-            <Button asChild className="bg-gradient-to-r from-primary to-purple-600">
-              <a href="tel:+79020526145">Позвонить</a>
-            </Button>
           </nav>
         )}
       </div>

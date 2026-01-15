@@ -395,17 +395,6 @@ const MainSections = ({ scrollToSection }: MainSectionsProps) => {
             >
               Забронировать место
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 transition-all"
-              asChild
-            >
-              <a href="tel:+79020526145">
-                <Icon name="Phone" className="mr-2" size={20} />
-                Позвонить: 89020526145
-              </a>
-            </Button>
           </div>
         </div>
       </section>

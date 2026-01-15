@@ -44,17 +44,6 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
             >
               Забронировать
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="text-lg px-8 border-2 border-primary hover:bg-primary hover:text-white transition-all"
-              asChild
-            >
-              <a href="tel:+79020526145">
-                <Icon name="Phone" className="mr-2" size={20} />
-                Позвонить
-              </a>
-            </Button>
           </div>
         </div>
       </div>

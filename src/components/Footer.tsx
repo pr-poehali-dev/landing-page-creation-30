@@ -42,10 +42,6 @@ const Footer = ({ scrollToSection }: FooterProps) => {
           <div>
             <h3 className="text-lg font-bold mb-4">Контакты</h3>
             <div className="space-y-2">
-              <a href="tel:+79020526145" className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity">
-                <Icon name="Phone" size={18} />
-                +7 902 052-61-45
-              </a>
               <a href="mailto:mashazoohot@mail.ru" className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity">
                 <Icon name="Mail" size={18} />
                 mashazoohot@mail.ru
