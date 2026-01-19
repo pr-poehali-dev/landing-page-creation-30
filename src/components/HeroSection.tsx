@@ -40,7 +40,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
             <Button 
               size="lg" 
               className="bg-gradient-to-r from-primary to-purple-600 text-lg px-8 hover:shadow-xl transition-all transform hover:scale-105"
-              onClick={() => scrollToSection('services')}
+              onClick={() => scrollToSection('booking')}
             >
               Забронировать
             </Button>
