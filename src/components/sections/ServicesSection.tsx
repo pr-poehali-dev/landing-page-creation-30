@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
@@ -8,8 +8,31 @@ interface ServicesSectionProps {
   scrollToSection: (id: string) => void;
 }
 
+interface Review {
+  id: number;
+  author_name: string;
+  rating: number;
+  review_text: string;
+  pet_type: string;
+  created_at: string;
+}
+
 const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  const [reviews, setReviews] = useState<Review[]>([]);
+
+  useEffect(() => {
+    const loadReviews = async () => {
+      try {
+        const response = await fetch('https://functions.poehali.dev/d2fbb3df-e4d4-48ab-9fe7-84b2b2a82db2');
+        const data = await response.json();
+        setReviews(data.reviews || []);
+      } catch (error) {
+        console.error('Ошибка загрузки отзывов:', error);
+      }
+    };
+    loadReviews();
+  }, [isReviewModalOpen]);
 
   return (
     <>
@@ -287,71 +310,40 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 bg-white animate-on-scroll-scale">
-              <div className="flex items-center gap-1 mb-4">
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-              </div>
-              <p className="text-lg mb-6 italic text-muted-foreground">
-                "Оставляли свою Лору на 2 недели. Каждый день получали фото — собака счастлива! Спасибо за заботу!"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  А
-                </div>
-                <div>
-                  <div className="font-bold">Анна Ковалёва</div>
-                  <div className="text-sm text-muted-foreground">Хозяйка Лоры</div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 bg-white animate-on-scroll-scale">
-              <div className="flex items-center gap-1 mb-4">
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-              </div>
-              <p className="text-lg mb-6 italic text-muted-foreground">
-                "Кот Марсик вернулся довольный и упитанный. Видно, что его любили. Теперь только к вам!"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  Д
-                </div>
-                <div>
-                  <div className="font-bold">Дмитрий Петров</div>
-                  <div className="text-sm text-muted-foreground">Хозяин Марсика</div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 bg-white animate-on-scroll-scale">
-              <div className="flex items-center gap-1 mb-4">
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-                <Icon name="Star" className="text-orange-500 fill-orange-500" size={20} />
-              </div>
-              <p className="text-lg mb-6 italic text-muted-foreground">
-                "Профессиональный подход! Мой Рекс с удовольствием ехал к вам снова. Рекомендую всем!"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  М
-                </div>
-                <div>
-                  <div className="font-bold">Мария Соколова</div>
-                  <div className="text-sm text-muted-foreground">Хозяйка Рекса</div>
-                </div>
-              </div>
-            </Card>
+            {reviews.length === 0 ? (
+              <Card className="p-8 col-span-full text-center">
+                <p className="text-muted-foreground">Отзывов пока нет. Станьте первым!</p>
+              </Card>
+            ) : (
+              reviews.slice(0, 6).map((review) => (
+                <Card key={review.id} className="p-8 hover:shadow-2xl transition-all duration-300 bg-white animate-on-scroll-scale">
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Icon
+                        key={i}
+                        name="Star"
+                        size={20}
+                        className={i < review.rating ? 'text-orange-500 fill-orange-500' : 'text-gray-300'}
+                      />
+                    ))}
+                  </div>
+                  <p className="text-lg mb-6 italic text-muted-foreground">
+                    "{review.review_text}"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                      {review.author_name.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                      <div className="font-bold">{review.author_name}</div>
+                      {review.pet_type && (
+                        <div className="text-sm text-muted-foreground">{review.pet_type}</div>
+                      )}
+                    </div>
+                  </div>
+                </Card>
+              ))
+            )}
           </div>
 
           <div className="text-center mt-12">
