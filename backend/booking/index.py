@@ -1,12 +1,10 @@
 import json
 import os
-import urllib.request
-import urllib.parse
-from datetime import datetime
-
+import psycopg2
+from psycopg2.extras import RealDictCursor
 
 def handler(event: dict, context) -> dict:
-    """Обработка заявок на бронирование и отправка в Telegram"""
+    """Обработка заявок на бронирование и сохранение в базу данных"""
     
     method = event.get('httpMethod', 'POST')
     
@@ -34,109 +32,65 @@ def handler(event: dict, context) -> dict:
             'isBase64Encoded': False
         }
     
+    dsn = os.environ.get('DATABASE_URL')
+    if not dsn:
+        return {
+            'statusCode': 500,
+            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            'body': json.dumps({'error': 'DATABASE_URL not configured'}),
+            'isBase64Encoded': False
+        }
+    
     try:
         body = json.loads(event.get('body', '{}'))
         
-        owner_name = body.get('ownerName', '')
-        phone = body.get('phone', '')
-        pet_name = body.get('petName', '')
-        animal_type = body.get('animalType', '')
-        check_in = body.get('checkIn', '')
-        check_out = body.get('checkOut', '')
-        package = body.get('package', '')
-        details = body.get('details', '')
+        owner_name = body.get('ownerName', '').strip()
+        phone = body.get('phone', '').strip()
+        pet_name = body.get('petName', '').strip()
+        animal_type = body.get('animalType', '').strip()
+        check_in = body.get('checkIn', '').strip()
+        check_out = body.get('checkOut', '').strip()
+        package = body.get('package', '').strip()
+        details = body.get('details', '').strip()
         
-        animal_types = {
-            'dog': '🐕 Собака',
-            'cat': '🐈 Кошка',
-            'rodent': '🐹 Грызун',
-            'bird': '🦜 Птица',
-            'reptile': '🦎 Рептилия'
-        }
-        
-        packages = {
-            'standard': 'Стандартная передержка',
-            'comfort': 'Комфорт Плюс',
-            'luxury': 'Люкс'
-        }
-        
-        animal_label = animal_types.get(animal_type, animal_type)
-        package_label = packages.get(package, package)
-        
-        message = f"""🎉 <b>Новая заявка на бронирование!</b>
-
-👤 <b>Владелец:</b> {owner_name}
-📱 <b>Телефон:</b> {phone}
-
-🐾 <b>Питомец:</b> {pet_name}
-🦴 <b>Вид:</b> {animal_label}
-
-📅 <b>Заселение:</b> {check_in}
-📅 <b>Выселение:</b> {check_out}
-
-📦 <b>Пакет:</b> {package_label}
-
-📝 <b>Особенности:</b>
-{details if details else 'Не указаны'}
-
-⏰ <b>Время заявки:</b> {datetime.now().strftime('%d.%m.%Y %H:%M')}
-
----
-🏠 Зоогостиница "В гостях у Маши"
-"""
-        
-        bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
-        chat_id = os.environ.get('TELEGRAM_CHAT_ID')
-        
-        if not bot_token or not chat_id:
+        if not all([owner_name, phone, pet_name, animal_type, check_in, check_out, package]):
             return {
-                'statusCode': 500,
-                'headers': {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
-                },
-                'body': json.dumps({'error': 'Telegram credentials not configured'}),
+                'statusCode': 400,
+                'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                'body': json.dumps({'error': 'Missing required fields'}),
                 'isBase64Encoded': False
             }
         
-        telegram_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+        conn = psycopg2.connect(dsn)
+        cur = conn.cursor(cursor_factory=RealDictCursor)
         
-        data = urllib.parse.urlencode({
-            'chat_id': chat_id,
-            'text': message,
-            'parse_mode': 'HTML'
-        }).encode('utf-8')
+        cur.execute("""
+            INSERT INTO bookings 
+            (owner_name, phone, pet_name, animal_type, check_in, check_out, package, details, status)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, 'new')
+            RETURNING id
+        """, (owner_name, phone, pet_name, animal_type, check_in, check_out, package, details))
         
-        req = urllib.request.Request(telegram_url, data=data, method='POST')
+        result = cur.fetchone()
+        booking_id = result['id']
         
-        with urllib.request.urlopen(req) as response:
-            result = json.loads(response.read().decode('utf-8'))
-            
-            if result.get('ok'):
-                return {
-                    'statusCode': 200,
-                    'headers': {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': '*'
-                    },
-                    'body': json.dumps({
-                        'success': True,
-                        'message': 'Заявка успешно отправлена'
-                    }),
-                    'isBase64Encoded': False
-                }
-            else:
-                return {
-                    'statusCode': 500,
-                    'headers': {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': '*'
-                    },
-                    'body': json.dumps({
-                        'error': 'Failed to send message to Telegram'
-                    }),
-                    'isBase64Encoded': False
-                }
+        conn.commit()
+        cur.close()
+        conn.close()
+        
+        return {
+            'statusCode': 200,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': json.dumps({
+                'success': True,
+                'booking_id': booking_id,
+                'message': 'Заявка успешно принята'
+            }),
+            'isBase64Encoded': False
+        }
     
     except Exception as e:
         return {
