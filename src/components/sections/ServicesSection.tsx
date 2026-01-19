@@ -1,14 +1,20 @@
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
+import ReviewModal from '@/components/ReviewModal';
 
 interface ServicesSectionProps {
   scrollToSection: (id: string) => void;
 }
 
 const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+
   return (
     <>
+      <ReviewModal isOpen={isReviewModalOpen} onClose={() => setIsReviewModalOpen(false)} />
+      
       <section className="py-16 md:py-20 bg-gradient-to-br from-orange-50 via-white to-purple-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-on-scroll">
@@ -352,12 +358,10 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
             <Button 
               size="lg" 
               className="bg-gradient-to-r from-primary to-purple-600 text-white text-lg px-8 hover:shadow-xl transition-all transform hover:scale-105"
-              asChild
+              onClick={() => setIsReviewModalOpen(true)}
             >
-              <a href="mailto:mashazoohot@mail.ru?subject=Отзыв о зоогостинице">
-                <Icon name="MessageSquare" className="mr-2" size={20} />
-                Оставить отзыв
-              </a>
+              <Icon name="MessageSquare" className="mr-2" size={20} />
+              Оставить отзыв
             </Button>
           </div>
         </div>
