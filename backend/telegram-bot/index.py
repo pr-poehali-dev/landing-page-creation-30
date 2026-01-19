@@ -26,13 +26,13 @@ def handler(event: dict, context) -> dict:
             'isBase64Encoded': False
         }
     
-    telegram_token = os.environ.get('TELEGRAM_BOT_TOKEN')
+    telegram_token = os.environ.get('TELEGRAM_BOT_TOKEN_CONSULTANT')
     
     if not telegram_token:
         return {
             'statusCode': 500,
             'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-            'body': json.dumps({'error': 'Missing TELEGRAM_BOT_TOKEN'}),
+            'body': json.dumps({'error': 'Missing TELEGRAM_BOT_TOKEN_CONSULTANT'}),
             'isBase64Encoded': False
         }
     
