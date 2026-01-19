@@ -13,6 +13,15 @@ const Index = () => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
     setMobileMenuOpen(false);
+    
+    if (id === 'booking') {
+      setTimeout(() => {
+        element?.classList.add('highlight-on-scroll');
+        setTimeout(() => {
+          element?.classList.remove('highlight-on-scroll');
+        }, 2000);
+      }, 500);
+    }
   };
 
   return (

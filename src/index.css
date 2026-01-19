@@ -188,4 +188,18 @@
       transform: translateY(0);
     }
   }
+
+  @keyframes highlightPulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(124, 58, 237, 0);
+    }
+    50% {
+      box-shadow: 0 0 30px 10px rgba(124, 58, 237, 0.4);
+    }
+  }
+
+  .highlight-on-scroll {
+    animation: highlightPulse 2s ease-in-out;
+  }
 }
