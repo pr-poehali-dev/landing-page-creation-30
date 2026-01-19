@@ -53,24 +53,33 @@ def handler(event: dict, context) -> dict:
         
         if user_text.startswith('/start'):
             response_text = get_welcome_message()
+            keyboard = get_main_keyboard()
         elif 'цен' in user_text or 'стоимость' in user_text or 'тариф' in user_text:
             response_text = get_pricing_info()
+            keyboard = get_main_keyboard()
         elif 'скидк' in user_text or 'акци' in user_text:
             response_text = get_discounts_info()
+            keyboard = get_main_keyboard()
         elif 'услуг' in user_text or 'преимущ' in user_text or 'что вход' in user_text:
             response_text = get_services_info()
+            keyboard = get_main_keyboard()
         elif 'брон' in user_text or 'записа' in user_text or 'заявк' in user_text:
             response_text = get_booking_info()
+            keyboard = get_main_keyboard()
         elif 'контакт' in user_text or 'адрес' in user_text or 'телефон' in user_text or 'email' in user_text:
             response_text = get_contacts_info()
+            keyboard = get_main_keyboard()
         elif 'график' in user_text or 'работа' in user_text or 'время' in user_text:
             response_text = get_schedule_info()
+            keyboard = get_main_keyboard()
         elif 'животн' in user_text or 'питом' in user_text or 'собак' in user_text or 'кош' in user_text:
             response_text = get_animals_info()
+            keyboard = get_main_keyboard()
         else:
             response_text = get_help_message()
+            keyboard = get_main_keyboard()
         
-        send_telegram_message(telegram_token, chat_id, response_text)
+        send_telegram_message(telegram_token, chat_id, response_text, keyboard)
         
         return {
             'statusCode': 200,
@@ -220,16 +229,33 @@ def get_help_message() -> str:
 
 Или просто задайте свой вопрос!"""
 
-def send_telegram_message(token: str, chat_id: int, text: str) -> bool:
-    """Отправить сообщение в Telegram"""
+def get_main_keyboard() -> dict:
+    """Создать клавиатуру с кнопками быстрых ответов"""
+    return {
+        'keyboard': [
+            [{'text': '💰 Цены'}, {'text': '🎁 Скидки'}],
+            [{'text': '⭐ Услуги'}, {'text': '📝 Бронирование'}],
+            [{'text': '📍 Контакты'}, {'text': '🐾 Животные'}]
+        ],
+        'resize_keyboard': True,
+        'one_time_keyboard': False
+    }
+
+def send_telegram_message(token: str, chat_id: int, text: str, keyboard: dict = None) -> bool:
+    """Отправить сообщение в Telegram с клавиатурой"""
     try:
+        payload = {
+            'chat_id': chat_id,
+            'text': text,
+            'parse_mode': 'HTML'
+        }
+        
+        if keyboard:
+            payload['reply_markup'] = keyboard
+        
         response = requests.post(
             f'https://api.telegram.org/bot{token}/sendMessage',
-            json={
-                'chat_id': chat_id,
-                'text': text,
-                'parse_mode': 'HTML'
-            },
+            json=payload,
             timeout=5
         )
         return response.status_code == 200
