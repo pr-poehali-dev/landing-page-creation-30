@@ -49,9 +49,7 @@ def handler(event: dict, context) -> dict:
         
         message = body['message']
         chat_id = message['chat']['id']
-        user_text = message.get('text', '').lower().strip()
-        
-        print(f"Received message: '{user_text}' from chat_id: {chat_id}")
+        user_text = message.get('text', '').lower()
         
         if user_text.startswith('/start'):
             response_text = get_welcome_message()
