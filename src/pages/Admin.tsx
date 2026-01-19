@@ -38,7 +38,7 @@ const Admin = () => {
   const loadReviews = async () => {
     setLoading(true);
     try {
-      const response = await fetch('https://functions.poehali.dev/c8f6ab06-9563-41da-92b7-c68de21c2c4c');
+      const response = await fetch('https://functions.poehali.dev/d93b2d94-fa73-4600-a52c-e71e7829916f');
       const data = await response.json();
       setReviews(data.reviews || []);
     } catch (err) {
@@ -50,7 +50,7 @@ const Admin = () => {
 
   const handleApprove = async (id: number) => {
     try {
-      const response = await fetch('https://functions.poehali.dev/c8f6ab06-9563-41da-92b7-c68de21c2c4c', {
+      const response = await fetch('https://functions.poehali.dev/d93b2d94-fa73-4600-a52c-e71e7829916f', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, is_approved: true }),
@@ -66,7 +66,7 @@ const Admin = () => {
 
   const handleReject = async (id: number) => {
     try {
-      const response = await fetch('https://functions.poehali.dev/c8f6ab06-9563-41da-92b7-c68de21c2c4c', {
+      const response = await fetch('https://functions.poehali.dev/d93b2d94-fa73-4600-a52c-e71e7829916f', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id }),
