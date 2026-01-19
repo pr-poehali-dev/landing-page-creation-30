@@ -7,10 +7,7 @@ const TelegramChatButton = () => {
 
   useEffect(() => {
     setTimeout(() => setIsVisible(true), 1000);
-    
-    // Здесь можно будет получить username бота из API, если нужно
-    // Пока используем placeholder
-    setBotUsername('your_bot');
+    setBotUsername('Zoohotelvl_bot');
   }, []);
 
   const handleClick = () => {
