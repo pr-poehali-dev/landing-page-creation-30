@@ -86,6 +86,15 @@ const BookingSection = ({ scrollToSection }: BookingSectionProps) => {
                       required
                       className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                       placeholder="+7 (900) 000-00-00"
+                      defaultValue="+7("
+                      onInput={(e) => {
+                        const input = e.currentTarget;
+                        let value = input.value.replace(/\D/g, '');
+                        if (!value.startsWith('7')) value = '7' + value;
+                        value = value.substring(0, 11);
+                        const formatted = value.length > 1 ? `+7(${value.substring(1, 4)}${value.length > 4 ? `)${value.substring(4, 7)}${value.length > 7 ? `-${value.substring(7, 9)}${value.length > 9 ? `-${value.substring(9, 11)}` : ''}` : ''}` : ''}` : '+7(';
+                        input.value = formatted;
+                      }}
                     />
                   </div>
                 </div>
