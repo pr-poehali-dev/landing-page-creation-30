@@ -24,7 +24,7 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
   useEffect(() => {
     const loadReviews = async () => {
       try {
-        const response = await fetch('https://functions.poehali.dev/d2fbb3df-e4d4-48ab-9fe7-84b2b2a82db2');
+        const response = await fetch('https://functions.poehali.dev/9e6ec67d-1a42-4bd1-886c-c31b7c7ee10a');
         const data = await response.json();
         setReviews(data.reviews || []);
       } catch (error) {
