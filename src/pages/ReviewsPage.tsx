@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import ReviewModal from '@/components/ReviewModal';
 
 interface Review {
   id: number;
@@ -17,6 +18,7 @@ const ReviewsPage = () => {
   const navigate = useNavigate();
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
   useEffect(() => {
     const loadReviews = async () => {
@@ -34,10 +36,12 @@ const ReviewsPage = () => {
       }
     };
     loadReviews();
-  }, []);
+  }, [isReviewModalOpen]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-orange-50">
+      <ReviewModal isOpen={isReviewModalOpen} onClose={() => setIsReviewModalOpen(false)} />
+      
       <div className="container mx-auto px-4 py-16">
         <Button 
           variant="ghost" 
@@ -53,9 +57,17 @@ const ReviewsPage = () => {
             Отзывы клиентов
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">Все отзывы</h1>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-xl text-muted-foreground mb-6">
             {loading ? 'Загрузка...' : `${reviews.length} отзывов от наших клиентов`}
           </p>
+          <Button 
+            size="lg" 
+            className="bg-gradient-to-r from-primary to-purple-600 text-white text-lg px-8 hover:shadow-xl transition-all transform hover:scale-105"
+            onClick={() => setIsReviewModalOpen(true)}
+          >
+            <Icon name="MessageSquare" className="mr-2" size={20} />
+            Оставить отзыв
+          </Button>
         </div>
 
         {loading ? (
