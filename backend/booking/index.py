@@ -1,10 +1,11 @@
 import json
 import os
 import psycopg2
+import requests
 from psycopg2.extras import RealDictCursor
 
 def handler(event: dict, context) -> dict:
-    """Обработка заявок на бронирование и сохранение в базу данных"""
+    """Обработка заявок на бронирование, сохранение в БД и отправка в Telegram"""
     
     method = event.get('httpMethod', 'POST')
     
@@ -78,6 +79,12 @@ def handler(event: dict, context) -> dict:
         cur.close()
         conn.close()
         
+        # Отправка уведомления в Telegram
+        send_telegram_notification(
+            booking_id, owner_name, phone, pet_name, 
+            animal_type, check_in, check_out, package, details
+        )
+        
         return {
             'statusCode': 200,
             'headers': {
@@ -102,3 +109,59 @@ def handler(event: dict, context) -> dict:
             'body': json.dumps({'error': str(e)}),
             'isBase64Encoded': False
         }
+
+def send_telegram_notification(booking_id, owner_name, phone, pet_name, animal_type, check_in, check_out, package, details):
+    """Отправка уведомления о новой заявке в Telegram"""
+    telegram_token = os.environ.get('TELEGRAM_BOT_TOKEN')
+    telegram_chat_id = os.environ.get('TELEGRAM_CHAT_ID')
+    
+    if not telegram_token or not telegram_chat_id:
+        return False
+    
+    # Преобразование типа животного
+    animal_names = {
+        'dog': '🐕 Собака',
+        'cat': '🐈 Кошка',
+        'rodent': '🐹 Грызун',
+        'bird': '🐦 Птица',
+        'reptile': '🦎 Рептилия'
+    }
+    animal_display = animal_names.get(animal_type, animal_type)
+    
+    # Преобразование пакета
+    package_names = {
+        'standard': 'Стандартная передержка',
+        'comfort': 'Комфорт Плюс',
+        'luxury': 'Люкс'
+    }
+    package_display = package_names.get(package, package)
+    
+    message = f"""🆕 <b>Новая заявка на бронирование #{booking_id}</b>
+
+👤 <b>Хозяин:</b> {owner_name}
+📞 <b>Телефон:</b> {phone}
+
+🐾 <b>Питомец:</b> {pet_name}
+{animal_display}
+
+📅 <b>Заселение:</b> {check_in}
+📅 <b>Выселение:</b> {check_out}
+
+📦 <b>Пакет:</b> {package_display}"""
+    
+    if details:
+        message += f"\n\n📝 <b>Особенности:</b>\n{details}"
+    
+    try:
+        response = requests.post(
+            f'https://api.telegram.org/bot{telegram_token}/sendMessage',
+            json={
+                'chat_id': telegram_chat_id,
+                'text': message,
+                'parse_mode': 'HTML'
+            },
+            timeout=5
+        )
+        return response.status_code == 200
+    except Exception:
+        return False
