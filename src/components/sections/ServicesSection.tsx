@@ -24,15 +24,15 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
   useEffect(() => {
     const loadReviews = async () => {
       try {
-        console.log('🔄 Загружаю отзывы...');
         const response = await fetch('https://functions.poehali.dev/9e6ec67d-1a42-4bd1-886c-c31b7c7ee10a');
-        console.log('📡 Ответ получен:', response.status);
+        if (!response.ok) throw new Error('Ошибка загрузки');
         const data = await response.json();
-        console.log('📦 Данные:', data);
-        console.log('✅ Отзывов загружено:', data.reviews?.length || 0);
-        setReviews(data.reviews || []);
+        if (data.reviews && Array.isArray(data.reviews)) {
+          setReviews(data.reviews);
+        }
       } catch (error) {
-        console.error('❌ Ошибка загрузки отзывов:', error);
+        console.error('Ошибка загрузки отзывов:', error);
+        setReviews([]);
       }
     };
     loadReviews();
@@ -314,41 +314,34 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {console.log('🎨 Рендер отзывов, количество:', reviews.length)}
-            {reviews.length === 0 ? (
-              <Card className="p-8 col-span-full text-center">
-                <p className="text-muted-foreground">Загрузка отзывов...</p>
+            {reviews.map((review) => (
+              <Card key={review.id} className="p-8 hover:shadow-2xl transition-all duration-300 bg-white animate-on-scroll-scale">
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Icon
+                      key={i}
+                      name="Star"
+                      size={20}
+                      className={i < review.rating ? 'text-orange-500 fill-orange-500' : 'text-gray-300'}
+                    />
+                  ))}
+                </div>
+                <p className="text-lg mb-6 italic text-muted-foreground">
+                  "{review.review_text}"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                    {review.author_name.charAt(0).toUpperCase()}
+                  </div>
+                  <div>
+                    <div className="font-bold">{review.author_name}</div>
+                    {review.pet_type && (
+                      <div className="text-sm text-muted-foreground">{review.pet_type}</div>
+                    )}
+                  </div>
+                </div>
               </Card>
-            ) : (
-              reviews.slice(0, 6).map((review) => (
-                <Card key={review.id} className="p-8 hover:shadow-2xl transition-all duration-300 bg-white animate-on-scroll-scale">
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Icon
-                        key={i}
-                        name="Star"
-                        size={20}
-                        className={i < review.rating ? 'text-orange-500 fill-orange-500' : 'text-gray-300'}
-                      />
-                    ))}
-                  </div>
-                  <p className="text-lg mb-6 italic text-muted-foreground">
-                    "{review.review_text}"
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                      {review.author_name.charAt(0).toUpperCase()}
-                    </div>
-                    <div>
-                      <div className="font-bold">{review.author_name}</div>
-                      {review.pet_type && (
-                        <div className="text-sm text-muted-foreground">{review.pet_type}</div>
-                      )}
-                    </div>
-                  </div>
-                </Card>
-              ))
-            )}
+            ))}
           </div>
 
           <div className="text-center mt-12">
