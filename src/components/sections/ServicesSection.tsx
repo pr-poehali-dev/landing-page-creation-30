@@ -303,60 +303,6 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
         </div>
       </section>
 
-      <section id="reviews" className="py-16 md:py-20 bg-gradient-to-br from-purple-50 to-orange-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-on-scroll">
-            <div className="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-medium mb-4">
-              Отзывы клиентов
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary">Что о нас говорят</h2>
-            <p className="text-xl text-muted-foreground">500+ довольных хозяев и их питомцев</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {reviews.slice(0, 3).map((review) => (
-              <Card key={review.id} className="p-8 hover:shadow-2xl transition-all duration-300 bg-white animate-on-scroll-scale">
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Icon
-                      key={i}
-                      name="Star"
-                      size={20}
-                      className={i < review.rating ? 'text-orange-500 fill-orange-500' : 'text-gray-300'}
-                    />
-                  ))}
-                </div>
-                <p className="text-lg mb-6 italic text-muted-foreground">
-                  "{review.review_text}"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                    {review.author_name.charAt(0).toUpperCase()}
-                  </div>
-                  <div>
-                    <div className="font-bold">{review.author_name}</div>
-                    {review.pet_type && (
-                      <div className="text-sm text-muted-foreground">{review.pet_type}</div>
-                    )}
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-primary to-purple-600 text-white text-lg px-8 hover:shadow-xl transition-all transform hover:scale-105"
-              onClick={() => setIsReviewModalOpen(true)}
-            >
-              <Icon name="MessageSquare" className="mr-2" size={20} />
-              Оставить отзыв
-            </Button>
-          </div>
-        </div>
-      </section>
-
       <section id="pricing" className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-on-scroll">
