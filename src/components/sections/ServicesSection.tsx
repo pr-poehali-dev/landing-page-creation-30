@@ -314,9 +314,10 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {console.log('🎨 Рендер отзывов, количество:', reviews.length)}
             {reviews.length === 0 ? (
               <Card className="p-8 col-span-full text-center">
-                <p className="text-muted-foreground">Отзывов пока нет. Станьте первым!</p>
+                <p className="text-muted-foreground">Загрузка отзывов...</p>
               </Card>
             ) : (
               reviews.slice(0, 6).map((review) => (
