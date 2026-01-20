@@ -313,8 +313,8 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
             <p className="text-xl text-muted-foreground">500+ довольных хозяев и их питомцев</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {reviews.map((review) => (
+          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {reviews.slice(0, 3).map((review) => (
               <Card key={review.id} className="p-8 hover:shadow-2xl transition-all duration-300 bg-white animate-on-scroll-scale">
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
