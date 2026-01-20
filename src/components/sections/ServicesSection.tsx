@@ -24,11 +24,15 @@ const ServicesSection = ({ scrollToSection }: ServicesSectionProps) => {
   useEffect(() => {
     const loadReviews = async () => {
       try {
+        console.log('🔄 Загружаю отзывы...');
         const response = await fetch('https://functions.poehali.dev/9e6ec67d-1a42-4bd1-886c-c31b7c7ee10a');
+        console.log('📡 Ответ получен:', response.status);
         const data = await response.json();
+        console.log('📦 Данные:', data);
+        console.log('✅ Отзывов загружено:', data.reviews?.length || 0);
         setReviews(data.reviews || []);
       } catch (error) {
-        console.error('Ошибка загрузки отзывов:', error);
+        console.error('❌ Ошибка загрузки отзывов:', error);
       }
     };
     loadReviews();
