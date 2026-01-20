@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 
 interface FooterProps {
@@ -5,6 +6,7 @@ interface FooterProps {
 }
 
 const Footer = ({ scrollToSection }: FooterProps) => {
+  const navigate = useNavigate();
   return (
     <footer className="bg-gradient-to-r from-primary via-purple-700 to-purple-900 text-white py-16">
       <div className="container mx-auto px-4">
@@ -26,7 +28,7 @@ const Footer = ({ scrollToSection }: FooterProps) => {
               <button onClick={() => scrollToSection('booking')} className="block opacity-90 hover:opacity-100 transition-opacity">
                 Бронирование
               </button>
-              <button onClick={() => scrollToSection('reviews')} className="block opacity-90 hover:opacity-100 transition-opacity">
+              <button onClick={() => navigate('/reviews')} className="block opacity-90 hover:opacity-100 transition-opacity">
                 Отзывы
               </button>
             </div>
