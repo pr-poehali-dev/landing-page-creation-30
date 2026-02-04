@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 
 interface FooterProps {
@@ -6,7 +5,6 @@ interface FooterProps {
 }
 
 const Footer = ({ scrollToSection }: FooterProps) => {
-  const navigate = useNavigate();
   return (
     <footer className="bg-gradient-to-r from-primary via-purple-700 to-purple-900 text-white py-16">
       <div className="container mx-auto px-4">
@@ -28,7 +26,7 @@ const Footer = ({ scrollToSection }: FooterProps) => {
               <button onClick={() => scrollToSection('booking')} className="block opacity-90 hover:opacity-100 transition-opacity">
                 Бронирование
               </button>
-              <button onClick={() => navigate('/reviews')} className="block opacity-90 hover:opacity-100 transition-opacity">
+              <button onClick={() => scrollToSection('reviews')} className="block opacity-90 hover:opacity-100 transition-opacity">
                 Отзывы
               </button>
             </div>
@@ -51,7 +49,7 @@ const Footer = ({ scrollToSection }: FooterProps) => {
           <div>
             <h3 className="text-lg font-bold mb-4">Мы в соцсетях</h3>
             <div className="flex gap-3">
-              <a href="https://www.instagram.com/anna_balk?igsh=YXB3Y3Q5dm9iNXR0" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all">
+              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all">
                 <Icon name="Instagram" size={20} />
               </a>
               <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all">
